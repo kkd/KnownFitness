@@ -1,6 +1,6 @@
 <?php
 
-    namespace IdnoPlugins\Tracks\Pages {
+    namespace IdnoPlugins\Fitness\Pages {
 
         class Delete extends \Idno\Common\Page {
 
@@ -10,7 +10,7 @@
 
                 // Are we loading an entity?
                 if (!empty($this->arguments)) {
-                    $object = \IdnoPlugins\Tracks\Tracks::getByID($this->arguments[0]);
+                    $object = \IdnoPlugins\Fitness\Fitness::getByID($this->arguments[0]);
                 } else {
                     // TODO 404
                     $this->forward();
@@ -37,14 +37,14 @@
                 if (empty($object)) $this->forward();
                 if (!$object->canEdit()) {
                     $this->setResponse(403);
-                    \Idno\Core\Idno::site()->session()->addErrorMessage("You don't have permission to perform this task.");
+                    \Idno\Core\Idno::site()->session()->addErrorMessage("You don't have permission to delete this.");
                     $this->forward();
                 }
 
                 if ($object->delete()) {
-                    \Idno\Core\Idno::site()->session()->addMessage('Your tracks was deleted.');
+                    \Idno\Core\Idno::site()->session()->addMessage('Your fitness activity was deleted.');
                 } else {
-                    \Idno\Core\Idno::site()->session()->addErrorMessage("We couldn't delete your tracks.");
+                    \Idno\Core\Idno::site()->session()->addErrorMessage("We couldn't delete your fitness activity.");
                 }
                 $this->forward($_SERVER['HTTP_REFERER']);
             }

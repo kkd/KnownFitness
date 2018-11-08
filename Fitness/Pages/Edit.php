@@ -1,6 +1,6 @@
 <?php
 
-    namespace IdnoPlugins\Tracks\Pages {
+    namespace IdnoPlugins\Fitness\Pages {
 
         class Edit extends \Idno\Common\Page {
 
@@ -10,19 +10,19 @@
 
                 // Are we loading an entity?
                 if (!empty($this->arguments)) {
-                    $object = \IdnoPlugins\Tracks\Tracks::getByID($this->arguments[0]);
+                    $object = \IdnoPlugins\Fitness\Fitness::getByID($this->arguments[0]);
                 } else {
-                    $object = new \IdnoPlugins\Tracks\Tracks();
+                    $object = new \IdnoPlugins\Fitness\Fitness();
                 }
 
- 		if ($owner = $object->getOwner()) {
+                if ($owner = $object->getOwner()) {
                     $this->setOwner($owner);
                 }
 
                 $t = \Idno\Core\Idno::site()->template();
                 $body = $t->__(array(
                     'object' => $object
-                ))->draw('entity/Tracks/edit');
+                ))->draw('entity/Fitness/edit');
 
                 if (empty($object)) {
                     $title = 'Upload GPX';
@@ -42,10 +42,10 @@
 
                 $new = false;
                 if (!empty($this->arguments)) {
-                    $object = \IdnoPlugins\Tracks\Tracks::getByID($this->arguments[0]);
+                    $object = \IdnoPlugins\Fitness\Fitness::getByID($this->arguments[0]);
                 }
                 if (empty($object)) {
-                    $object = new \IdnoPlugins\Tracks\Tracks();
+                    $object = new \IdnoPlugins\Fitness\Fitness();
                 }
 
                 if ($object->saveDataFromInput($this)) {
