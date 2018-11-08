@@ -38,32 +38,19 @@
             <div class="content-form">
                 <label for="type">Activity</label>
                 <select name="type">
-                    <option value="Uncategorized">Uncategorized</option>
-                    <option value="Running">Running</option>
-                    <option value="Cycling">Cycling</option>
-                    <option value="Fitness Equipment">Fitness Equipment</option>
-                    <option value="Hiking">Hiking</option>
-                    <option value="Swimming">Swimming</option>
-                    <option value="Walking">Walking</option>
-                    <option value="Transition">Transition</option>
-                    <option value="Motorcycling">Motorcycling</option>
-                    <option value="Diving">Diving</option>
-                    <option value="Yoga">Yoga</option>
+                    <?php
+                    $activities = ['Uncategorized', 'Running', 'Cycling', 'Fitness Equipment', 'Hiking', 'Swimming', 'Transition', 'Motorcycling', 'Diving', 'Yoga'];
+                    foreach($activities as $activity) {
+                        echo '<option value="' . $activity . '" ' . (($vars['object']->type == $activity) ? 'selected' : '') . '>' . $activity . '</option>';
+                    }
+                    ?>
                 </select>
             </div>
 
             <div class="content-form">
-                <label for="notes">Notes</label>
-                <textarea name="notes" id="notes" placeholder="Add notes" class="form-control col-md-8 bodyInput"><?=htmlspecialchars($vars['object']->notes)?></textarea>
+                <label for="body">Notes</label>
+                <textarea name="body" id="body" placeholder="Add notes" class="form-control col-md-8 bodyInput"><?=htmlspecialchars($vars['object']->body)?></textarea>
             </div>
-
-            <?php
-            if (empty($vars['object']->_id)) {
-                ?>
-                <button type="button" class="btn btn-inverse advanced">Advanced</button>
-                <?php
-            }
-            ?>
 
             <?=$this->draw('entity/tags/input');?>
 

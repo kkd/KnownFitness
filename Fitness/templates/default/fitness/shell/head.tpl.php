@@ -20,8 +20,12 @@ if (empty($height)){
 <link rel="stylesheet" href="<?php echo \Idno\Core\Idno::site()->config()->getDisplayURL() ?>IdnoPlugins/Fitness/external/leaflet-elevation/leaflet.elevation-0.0.4.css" />
 <script src="<?php echo \Idno\Core\Idno::site()->config()->getDisplayURL() ?>IdnoPlugins/Fitness/external/leaflet-elevation/d3.v3.min.js" charset="utf-8"></script>
 <script type="text/javascript" src="<?php echo \Idno\Core\Idno::site()->config()->getDisplayURL() ?>IdnoPlugins/Fitness/external/leaflet-elevation/leaflet.elevation-0.0.4.min.js"></script>
+<script type="text/javascript" src="<?php echo \Idno\Core\Idno::site()->config()->getDisplayURL() ?>IdnoPlugins/Fitness/external/leaflet-omnivore/leaflet-omnivore.js"></script>
 
-<script type="text/javascript" src="<?php echo \Idno\Core\Idno::site()->config()->getDisplayURL() ?>IdnoPlugins/Fitness/external/leaflet-gpx/gpx.js"></script>
+<?php /* FIXME: remove my token! */ ?>
+<script type="text/javascript">
+L.mapbox.accessToken = 'pk.eyJ1IjoiZmx5aW5ndHJvbGxleWNhcnMiLCJhIjoiUU1PT3k2RSJ9.YjUouHi0jFUbizq5W2-liA';
+</script>
 
 <style type="text/css">
 .gpx { border: 5px #aaa solid; border-radius: 5px;
