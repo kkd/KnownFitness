@@ -11,6 +11,8 @@ Inspired by [indieweb.org/exercise](https://indieweb.org/exercise).
   * Log into Known and click on Administration.
   * Click "enable" next to Fitness.
 
+  * __Note__ this might conflict with "Check-ins" and "Tracks" as they use different leaflet versions.
+
 ## Micropub to Fitness
 
 ```

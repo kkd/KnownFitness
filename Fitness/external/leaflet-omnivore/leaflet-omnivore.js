@@ -254,8 +254,40 @@ function tcxParse(gpx, options, layer) {
     });
     layer = layer || L.geoJson();
     var geojson = parsetcxdom(xml);
-    addData(layer, geojson);
+
+    // occasionally Garmin TCX files come out with NaN coordinates when they want to log some
+    // other metric (like heart rate) on the same TCX activity timeline.
+    var cleangeojson = cleanLayers(geojson);
+
+    addData(layer, cleangeojson);
     return layer;
+}
+
+function filterCoordinates(coords) {
+    var ret = [];
+    for(var i = 0; i < coords.length; i ++) {
+        if(!isNaN(coords[i][0]) && !isNaN(coords[i][1])) {
+            ret.push(coords[i]);
+        }
+    }
+
+    return ret;
+}
+
+function cleanLayers(geojson) {
+    var ret = Object.assign({}, { properties: geojson.properties, type: geojson.type, features: [] });
+    for(var i = 0; i < geojson.features.length; i++) {
+        ret.features[i] = {
+            geometry: {
+                type: geojson.features[i].geometry.type,
+                coordinates: filterCoordinates(geojson.features[i].geometry.coordinates)
+            },
+            type: geojson.features[i].type,
+            properties: Object.assign({}, geojson.features[i].properties)
+        };
+    }
+
+    return ret;
 }
 
 function kmlParse(gpx, options, layer) {
