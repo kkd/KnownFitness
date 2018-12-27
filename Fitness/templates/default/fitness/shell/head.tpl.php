@@ -1,9 +1,6 @@
 <?php if (!\Idno\Core\Idno::site()->plugins()->get('Fitness')) { ?>
-  <link rel="stylesheet" href="<?php echo \Idno\Core\Idno::site()->config()->getDisplayURL() ?>IdnoPlugins/Fitness/external/leaflet/leaflet.css"/>
-  <!--[if lte IE 8]>
-  <link rel="stylesheet" href="<?php echo \Idno\Core\Idno::site()->config()->getDisplayURL() ?>IdnoPlugins/Fitness/external/leaflet/leaflet.ie.css"/>
-  <![endif]-->
-  <script type="text/javascript" src="<?php echo \Idno\Core\Idno::site()->config()->getDisplayURL() ?>IdnoPlugins/Fitness/external/leaflet/leaflet.js"></script>
+  <link rel="stylesheet" href="<?php echo \Idno\Core\Idno::site()->config()->getDisplayURL() ?>IdnoPlugins/Fitness/external/leaflet-0.7.7/leaflet.css"/>
+  <script type="text/javascript" src="<?php echo \Idno\Core\Idno::site()->config()->getDisplayURL() ?>IdnoPlugins/Fitness/external/leaflet-0.7.7/leaflet-src.js"></script>
 <?php } ?>
 
 <?php

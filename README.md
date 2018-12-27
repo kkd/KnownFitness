@@ -13,6 +13,20 @@ Inspired by [indieweb.org/exercise](https://indieweb.org/exercise).
 
 ## Micropub to Fitness
 
+```
+h=entry
+&name=Trail Running
+&category[]=Trail Running
+&content=Great run
+&private=true
+&type=Trail Running
+&stationary=true
+&published=2016-02-21T12:50:53-08:00
+&updated=2016-02-21T12:50:53-08:00
+&location=geo:45.51533714,-122.646538633
+&track=gpx file
+```
+
   * name - becomes post 'title'
   * content - becomes post 'body'
   * private - becomes 'accessibility' for post owner
