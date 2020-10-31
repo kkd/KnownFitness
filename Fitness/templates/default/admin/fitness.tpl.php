@@ -58,7 +58,8 @@ if (empty($height)) { $height = '300px'; }
                                 foreach ([
                                     'OpenStreetMap' => 'osm',
                                     'Thunderforest Outdoors' => 'thunderforest',
-                                    'MapQuest' => 'mapquest'
+                                    'MapQuest' => 'mapquest',
+                                    'CyberJapan' => 'cyberjapan'
                                 ] as $field => $value) {
                                     ?>
                                     <option
