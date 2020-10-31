@@ -56,10 +56,10 @@ if (empty($height)) { $height = '300px'; }
                             <select name="mapdata">
                                 <?php
                                 foreach ([
+                                    'CyberJapan' => 'cyberjapan',
                                     'OpenStreetMap' => 'osm',
                                     'Thunderforest Outdoors' => 'thunderforest',
-                                    'MapQuest' => 'mapquest',
-                                    'CyberJapan' => 'cyberjapan'
+                                    'MapQuest' => 'mapquest'
                                 ] as $field => $value) {
                                     ?>
                                     <option
