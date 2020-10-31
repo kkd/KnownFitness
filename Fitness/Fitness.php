@@ -140,10 +140,6 @@ namespace IdnoPlugins\Fitness {
             }
 
             switch ($mapdata) {
-                case 'cyberjapan':
-                    $map = "L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png', {
-                        attribution: '<a href=\"https://maps.gsi.go.jp/development/ichiran.html\" target=\"_blank\">地理院タイル</a>'}).addTo(map);";
-                    break;
 
                 case 'mapquest':
                     $map = "L.tileLayer('http://otile{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpeg', {
@@ -161,10 +157,15 @@ namespace IdnoPlugins\Fitness {
 
                     break;
 
-                default:
+                case 'osm':
                    $map = "L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
           attribution: 'Map data &copy; <a href=\"http://www.osm.org\" target=\"_blank\">OpenStreetMap</a>'
         }).addTo(map);";
+                    break;
+
+                default:
+                    $map = "L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png', {
+                        attribution: '<a href=\"https://maps.gsi.go.jp/development/ichiran.html\" target=\"_blank\">地理院タイル</a>'}).addTo(map);";
             }
 
             return $map;
