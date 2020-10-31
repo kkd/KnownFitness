@@ -140,7 +140,12 @@ namespace IdnoPlugins\Fitness {
             }
 
             switch ($mapdata) {
-                case 'mapquest':
+                case 'cyberjapandata':
+                    $map = "L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png', {
+                        attribution: '<a href=\"https://maps.gsi.go.jp/development/ichiran.html\" target=\"_blank\">地理院タイル</a>'}).addTo(map);";
+                    break;
+
+                    case 'mapquest':
                     $map = "L.tileLayer('http://otile{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpeg', {
                         subdomains:\"1234\",
           attribution: 'Map data &copy; <a href=\"http://openstreetmap.org\">OpenStreetMap</a>. Tiles Courtesy of <a href=\"http://www.mapquest.com/\" target=\"_blank\">MapQuest</a>'
