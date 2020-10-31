@@ -43,8 +43,7 @@ namespace IdnoPlugins\Fitness\Pages {
                 \Idno\Core\site()->session()->addErrorMessage($e->getMessage());
             }
 
-            // $this->forward(Idno::site()->config()->getDisplayURL() . 'admin/fitness/');
-            $this->forward('admin/fitness/');            
+            $this->forward(Idno::site()->config()->getDisplayURL() . 'admin/fitness/');
 
         }
 
