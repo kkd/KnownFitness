@@ -30,7 +30,7 @@ namespace IdnoPlugins\Fitness\Pages {
                 $weight = $this->getInput('weight');
                 $height = $this->getInput('height');
 
-                if ($site) {}
+                if ($site) {
                     \Idno\Core\Idno::site()->config->config['fitness'] = array(
                         'metric'=>$metric,
                         'mapdata' => $mapdata,
