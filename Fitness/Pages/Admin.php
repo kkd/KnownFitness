@@ -30,19 +30,15 @@ namespace IdnoPlugins\Fitness\Pages {
                 $weight = $this->getInput('weight');
                 $height = $this->getInput('height');
 
-                if ($site) {
-                    \Idno\Core\site()->config->config['fitness'] = array(
-                        'metric'=>$metric,
-                        'mapdata' => $mapdata,
-                        'weight' => $weight,
-                        'height' => $height
-                    );
-                    \Idno\Core\site()->config()->save();
-                    \Idno\Core\site()->session()->addMessage('Your Fitness settings were saved.');
-                }
-                else {
-                    \Idno\Core\site()->session()->addErrorMessage('You must enter the site URL of the Known site you want to cross post to');
-                }
+                \Idno\Core\site()->config->config['fitness'] = array(
+                    'metric'=>$metric,
+                    'mapdata' => $mapdata,
+                    'weight' => $weight,
+                    'height' => $height
+                );
+                \Idno\Core\site()->config()->save();
+                \Idno\Core\site()->session()->addMessage('Your Fitness settings were saved.');
+
             } catch (\Exception $e) {
                 \Idno\Core\site()->session()->addErrorMessage($e->getMessage());
             }
