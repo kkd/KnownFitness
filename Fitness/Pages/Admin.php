@@ -30,7 +30,7 @@ namespace IdnoPlugins\Fitness\Pages {
                 $weight = $this->getInput('weight');
                 $height = $this->getInput('height');
 
-                \Idno\Core\site()->config->config['fitness'] = array(
+                \Idno\Core\site()->config()->config['fitness'] = array(
                     'metric'=>$metric,
                     'mapdata' => $mapdata,
                     'weight' => $weight,
@@ -43,7 +43,7 @@ namespace IdnoPlugins\Fitness\Pages {
                 \Idno\Core\site()->session()->addErrorMessage($e->getMessage());
             }
 
-            $this->forward(Idno::site()->config()->getDisplayURL() . 'admin/fitness/');
+            $this->forward(\Idno\Core\site()->config()->getDisplayURL() . 'admin/fitness/');
 
         }
 
