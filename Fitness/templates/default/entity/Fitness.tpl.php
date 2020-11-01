@@ -5,7 +5,7 @@
 
 $object = $vars['object'];
 
-$metric = \Idno\Core\Idno::site()->config()->fitness['metric'];
+$metric = \Idno\Core\site()->config()->fitness['metric'];
 if ($metric){
     $dist = 'km';
     $ele = 'm';

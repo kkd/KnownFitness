@@ -3,13 +3,13 @@
  * Admin settings template for plug-in wide settings
  */
 
-$mapdata = \Idno\Core\Idno::site()->config()->fitness['mapdata'];
+$mapdata = \Idno\Core\site()->config()->fitness['mapdata'];
 if (empty($mapdata)) { $mapdata = 'osm'; }
 
-$weight = \Idno\Core\Idno::site()->config()->fitness['weight'];
+$weight = \Idno\Core\site()->config()->fitness['weight'];
 if (empty($weight)) { $weight = '98%'; }
 
-$height = \Idno\Core\Idno::site()->config()->fitness['height'];
+$height = \Idno\Core\site()->config()->fitness['height'];
 if (empty($height)) { $height = '300px'; }
 ?>
 
@@ -27,7 +27,7 @@ if (empty($height)) { $height = '300px'; }
         </div>
     </div>
     <div class="col-md-10 col-md-offset-1">
-        <form action="<?= \Idno\Core\Idno::site()->config()->getDisplayURL() ?>admin/fitness" class="form-horizontal" method="post">
+        <form action="<?= \Idno\Core\site()->config()->getDisplayURL() ?>admin/fitness" class="form-horizontal" method="post">
         <div class="control-group">
                 <div class="content-type">
                     <div class="row">
@@ -38,7 +38,7 @@ if (empty($height)) { $height = '300px'; }
                             <input type="checkbox" data-toggle="toggle" data-onstyle="info" data-on="Yes" data-off="No"
                                    name="metric"
                                    value="true" 
-                                   <?php if (\Idno\Core\Idno::site()->config()->fitness['metric'] == true) echo 'checked'; ?>
+                                   <?php if (\Idno\Core\site()->config()->fitness['metric'] == true) echo 'checked'; ?>
                             >
                         </div>
                     </div>
