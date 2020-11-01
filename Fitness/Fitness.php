@@ -41,7 +41,7 @@ namespace IdnoPlugins\Fitness {
             }
 
             if ($new) {
-                if (!\Idno\Core\Idno::site()->triggerEvent("file/upload", [], true)) {
+                if (!\Idno\Core\site()->triggerEvent("file/upload", [], true)) {
                     return false;
                 }
             }
@@ -49,23 +49,23 @@ namespace IdnoPlugins\Fitness {
             // MicroPub endpoint will map:
 
             // 'name'
-            $this->title      = \Idno\Core\Idno::site()->currentPage()->getInput('title');
+            $this->title      = \Idno\Core\site()->currentPage()->getInput('title');
             // 'content'
-            $this->body       = \Idno\Core\Idno::site()->currentPage()->getInput('body');
+            $this->body       = \Idno\Core\site()->currentPage()->getInput('body');
             // 'visibility' == 'private'
-            $this->access     = \Idno\Core\Idno::site()->currentPage()->getInput('access');
+            $this->access     = \Idno\Core\site()->currentPage()->getInput('access');
 
             // TODO: add this to micropub
-            $this->type       = \Idno\Core\Idno::site()->currentPage()->getInput('type');
+            $this->type       = \Idno\Core\site()->currentPage()->getInput('type');
             // TODO: add this to micropub
-            $this->stationary = \Idno\Core\Idno::site()->currentPage()->getInput('stationary');
+            $this->stationary = \Idno\Core\site()->currentPage()->getInput('stationary');
             // TODO: add this to micropub
-            $this->distance   = \Idno\Core\Idno::site()->currentPage()->getInput('distance');
+            $this->distance   = \Idno\Core\site()->currentPage()->getInput('distance');
             // TODO: add 'track' to micropub for track uploading - see https://github.com/idno/known/blob/master/IdnoPlugins/IndiePub/Pages/MicroPub/Endpoint.php
 
             $this->setAccess($this->access);
 
-            if ($time = \Idno\Core\Idno::site()->currentPage()->getInput('created')) {
+            if ($time = \Idno\Core\site()->currentPage()->getInput('created')) {
                 if ($time = strtotime($time)) {
                     $this->created = $time;
                 }
@@ -83,7 +83,7 @@ namespace IdnoPlugins\Fitness {
                 // This is awful, but unfortunately, browsers can't be trusted to send the right mimetype.
                 $ext = pathinfo($_FILES['track']['name'], PATHINFO_EXTENSION);
                 if (empty($ext)) {
-                    \Idno\Core\Idno::site()->session()->addErrorMessage('We couldn\'t access your track. Please try again.');
+                    \Idno\Core\site()->session()->addErrorMessage('We couldn\'t access your track. Please try again.');
                     return false;
                 }
 
@@ -105,10 +105,10 @@ namespace IdnoPlugins\Fitness {
                         $this->attachFile($track);
                         $ok = true;
                     } else {
-                        \Idno\Core\Idno::site()->session()->addErrorMessage('Track wasn\'t attached.');
+                        \Idno\Core\site()->session()->addErrorMessage('Track wasn\'t attached.');
                     }
                 } else {
-                    \Idno\Core\Idno::site()->session()->addErrorMessage('This doesn\'t seem to be an track file .. ' . $_FILES['track']['type']);
+                    \Idno\Core\site()->session()->addErrorMessage('This doesn\'t seem to be an track file .. ' . $_FILES['track']['type']);
                 }
             }
 
@@ -119,7 +119,7 @@ namespace IdnoPlugins\Fitness {
 
     	    if ($this->publish($new)) {
                 if ($this->getAccess() == 'PUBLIC') {
-                    \Idno\Core\Webmention::pingMentions($this->getURL(), \Idno\Core\Idno::site()->template()->parseURLs($this->getTitle() . ' ' . $this->getDescription()));
+                    \Idno\Core\Webmention::pingMentions($this->getURL(), \Idno\Core\site()->template()->parseURLs($this->getTitle() . ' ' . $this->getDescription()));
                 }
 
                 return true;
@@ -136,7 +136,7 @@ namespace IdnoPlugins\Fitness {
          */
         function getLMapdata($mapdata) {
             if (empty($mapdata)) {
-                $mapdata = \Idno\Core\Idno::site()->config()->fitness['mapdata'];
+                $mapdata = \Idno\Core\site()->config()->fitness['mapdata'];
             }
 
             switch ($mapdata) {
